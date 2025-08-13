@@ -1,0 +1,42 @@
+package br.com.dalario.imc
+
+import androidx.compose.ui.graphics.Color
+import kotlin.math.pow
+
+fun calcularImc(peso: Double, altura: Double): Double{
+    var imc = peso / (altura/100).pow(2)
+    return imc
+}
+
+fun obterstatusimc(imc: Double): String {
+    return if(imc < 18.8){
+        "Abaixo do peso"
+    } else if(imc >= 18.5 && imc < 25.0){
+        "Peso Ideal"
+    } else if(imc >= 25.0 && imc < 30.0){
+        "Levemente acima do peso"
+    } else if(imc >=30.0 && imc < 35.0){
+        "Obesidade Grau I"
+    }else if(imc >=35.0 && imc < 40.0){
+        "Obesidade Grau II"
+    } else{
+        "Obesidade Grau III"
+    }
+
+}
+
+fun statuscor (statusimc:String): Color{
+    return if(statusimc == "Abaixo do peso"){
+        Color(0xFFFF172A)
+    } else if(statusimc == "Peso Ideal"){
+        Color(0xFF00E676)
+    }else if(statusimc == "Levemente acima do peso"){
+        Color(0xFFFFC400)
+    }else if(statusimc =="Obesidade Grau I"){
+        Color(0xFFFF172A)
+    }else if(statusimc == "Obesidade Grau II"){
+        Color(0xFFFF172A)
+    }else{
+        Color(0xFF020205)
+    }
+}
